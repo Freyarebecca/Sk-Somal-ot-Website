@@ -36,24 +36,9 @@ body {
     font-size: 90px;
 }
 
-.navbar-brand,
-.nav-link {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bolder;
-}
 
-.navbar-brand img {
-    margin-right: 10px;
-}
 
-.navbar-brand span {
-    margin-left: 10px;
-    /* Adds space between logo and text */
-    padding-right: 50px;
-    /* Adds space between text and menu */
-}
-
-/* Sticky Navbar */
+/* Global Navbar Styles */
 .navbar {
     position: fixed;
     top: 0;
@@ -61,7 +46,35 @@ body {
     z-index: 1000;
 }
 
-/* Adjust Navbar Text Color & Hover Effect */
+.navbar-brand,
+.nav-link {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+}
+
+/* Navbar Brand (Logo + Text) Fix */
+.navbar-brand {
+    display: flex;
+    align-items: center; /* Keeps logo and text in one line */
+    flex-wrap: nowrap; /* Prevents text from going below logo */
+    gap: 10px; /* Adds spacing between logo and text */
+}
+
+.navbar-brand img.logo {
+    width: 50px; /* Adjust logo size */
+    height: 50px;
+    object-fit: contain; /* Keeps aspect ratio */
+}
+
+.brand-text {
+    font-weight: bolder;
+    font-size: 16px;
+    color: white;
+    max-width: 200px; /* Ensures text stays within a limit */
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+/* Navigation Links */
 .navbar-nav .nav-link {
     color: white !important;
     transition: color 0.3s ease-in-out;
@@ -73,65 +86,64 @@ body {
     font-weight: bold;
 }
 
-/* Ensure Navbar is Responsive */
+/* Navbar Toggler */
 .navbar-toggler {
     border: none;
     outline: none;
 }
 
-/* Ensure expanded menu doesn’t overlay content */
+/* Responsive Navbar Fixes */
 @media (max-width: 991px) {
     .navbar-collapse {
-        background: rgba(255, 193, 7, 0.9);
-        /* Add background to menu */
+        background: rgba(255, 193, 7, 0.95);
         padding: 10px;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        z-index: 1000;
+        z-index: 999;
         border-bottom: 2px solid white;
     }
-}
 
-@media (max-width: 768px) {
-    .col-md-6 {
-        width: 100%;
+    /* Keep Logo and Text Inline on Mobile */
+    .navbar-brand {
+        flex-direction: row; /* Ensures they stay side by side */
+        text-align: left; /* Align text properly */
     }
 
+    .navbar-brand img.logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .brand-text {
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
 
     .nav-link {
         padding: 10px;
+        font-size: 14px;
     }
 }
 
+
+
+
+
+
+
+
+/*FOR CAROUSEL*/
 .carousel-item img {
     width: 100%;
     height: auto;
     max-height: 800px;
     object-fit: cover;
-}
-
-@media (max-width: 768px) {
-    .carousel-item img {
-        max-height: 400px;
-    }
-
-    .navbar-brand {
-        font-size: 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .navbar-brand img {
-        margin-bottom: 5px;
-    }
-
-    .nav-link {
-        font-size: 14px;
-    }
 }
 
 /* Style for News Section */
